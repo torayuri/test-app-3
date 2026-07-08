@@ -16,18 +16,12 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <style>
     :root{--p1:#2193b0;--p2:#6dd5ed;--s1:#11998e;--s2:#38ef7d;--bg:#e8f6f8;--card-bg:#ffffff;--title:#1a202c;--sub:#718096;--border:#e2e8f0;--badge-bg:#d4eef7;--badge-fg:#2193b0;--ul-border:#2193b0;--ul-hover:#d4eef7;}
-    body.theme-ocean   {--p1:#2193b0;--p2:#6dd5ed;--s1:#11998e;--s2:#38ef7d;--bg:#e8f6f8;--badge-bg:#d4eef7;--badge-fg:#2193b0;--ul-border:#2193b0;--ul-hover:#d4eef7;}
-    body.theme-dark    {--p1:#a44dff;--p2:#4361ee;--s1:#ff6b6b;--s2:#feca57;--bg:#0f0e17;--card-bg:#1e1d2f;--title:#fffffe;--sub:#94a1b2;--border:#2a2a3e;--badge-bg:#1e1d2f;--badge-fg:#a44dff;--ul-border:#a44dff;--ul-hover:#1e1d2f;}
-    body.theme-light   {--p1:#343a40;--p2:#6c757d;--s1:#20c997;--s2:#12b886;--bg:#f8f9fa;--badge-bg:#e9ecef;--badge-fg:#343a40;--ul-border:#6c757d;--ul-hover:#e9ecef;}
-    body.theme-ichigo  {--p1:#c9184a;--p2:#ff4d6d;--s1:#ff85a1;--s2:#fbb1bd;--bg:#fff0f3;--badge-bg:#fde2e4;--badge-fg:#c9184a;--ul-border:#c9184a;--ul-hover:#fde2e4;}
-    body.theme-matcha  {--p1:#4f6f52;--p2:#739072;--s1:#a9c9a4;--s2:#d8efd3;--bg:#f0f4e3;--badge-bg:#d8efd3;--badge-fg:#4f6f52;--ul-border:#4f6f52;--ul-hover:#d8efd3;}
-    body.theme-cotton  {--p1:#ff6fa3;--p2:#9ed9ff;--s1:#c4b5fd;--s2:#f0abfc;--bg:#fff0f8;--badge-bg:#ffe4f2;--badge-fg:#d946a8;--ul-border:#ff6fa3;--ul-hover:#ffe4f2;}
-    body.theme-sunset  {--p1:#e85d04;--p2:#f48c06;--s1:#dc2f02;--s2:#ffba08;--bg:#fff4e6;--badge-bg:#ffe8cc;--badge-fg:#e85d04;--ul-border:#e85d04;--ul-hover:#ffe8cc;}
-    body.theme-lavender{--p1:#7c3aed;--p2:#a78bfa;--s1:#db2777;--s2:#f9a8d4;--bg:#f5f3ff;--badge-bg:#ede9fe;--badge-fg:#7c3aed;--ul-border:#7c3aed;--ul-hover:#ede9fe;}
-    body.theme-midnight{--p1:#0ea5e9;--p2:#38bdf8;--s1:#06b6d4;--s2:#67e8f9;--bg:#0f172a;--card-bg:#1e293b;--title:#f1f5f9;--sub:#94a3b8;--border:#334155;--badge-bg:#0f172a;--badge-fg:#38bdf8;--ul-border:#0ea5e9;--ul-hover:#1e293b;}
-    body.theme-sakura  {--p1:#f43f5e;--p2:#fb7185;--s1:#ec4899;--s2:#f9a8d4;--bg:#fff1f2;--badge-bg:#ffe4e6;--badge-fg:#f43f5e;--ul-border:#f43f5e;--ul-hover:#ffe4e6;}
-    body.theme-honey   {--p1:#b45309;--p2:#f59e0b;--s1:#059669;--s2:#34d399;--bg:#fffbeb;--badge-bg:#fef3c7;--badge-fg:#b45309;--ul-border:#d97706;--ul-hover:#fef3c7;}
-    body.theme-sky     {--p1:#0369a1;--p2:#38bdf8;--s1:#0891b2;--s2:#67e8f9;--bg:#f0f9ff;--badge-bg:#e0f2fe;--badge-fg:#0369a1;--ul-border:#0369a1;--ul-hover:#e0f2fe;}
+    body.theme-ocean {--p1:#2193b0;--p2:#6dd5ed;--s1:#11998e;--s2:#38ef7d;--bg:#e8f6f8;--badge-bg:#d4eef7;--badge-fg:#2193b0;--ul-border:#2193b0;--ul-hover:#d4eef7;}
+    body.theme-dark  {--p1:#888888;--p2:#aaaaaa;--s1:#666666;--s2:#cccccc;--bg:#0f0f0f;--card-bg:#1a1a1a;--title:#f0f0f0;--sub:#888888;--border:#2a2a2a;--badge-bg:#222222;--badge-fg:#aaaaaa;--ul-border:#666666;--ul-hover:#222222;}
+    body.theme-light {--p1:#343a40;--p2:#6c757d;--s1:#20c997;--s2:#12b886;--bg:#f8f9fa;--badge-bg:#e9ecef;--badge-fg:#343a40;--ul-border:#6c757d;--ul-hover:#e9ecef;}
+    body.theme-ichigo{--p1:#c9184a;--p2:#ff4d6d;--s1:#ff85a1;--s2:#fbb1bd;--bg:#fff0f3;--badge-bg:#fde2e4;--badge-fg:#c9184a;--ul-border:#c9184a;--ul-hover:#fde2e4;}
+    body.theme-matcha{--p1:#4f6f52;--p2:#739072;--s1:#a9c9a4;--s2:#d8efd3;--bg:#f0f4e3;--badge-bg:#d8efd3;--badge-fg:#4f6f52;--ul-border:#4f6f52;--ul-hover:#d8efd3;}
+    body.theme-cotton{--p1:#ff6fa3;--p2:#9ed9ff;--s1:#c4b5fd;--s2:#f0abfc;--bg:#fff0f8;--badge-bg:#ffe4f2;--badge-fg:#d946a8;--ul-border:#ff6fa3;--ul-hover:#ffe4f2;}
 
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Sans','Yu Gothic',sans-serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:20px 20px 40px;transition:background .4s;}
@@ -322,18 +316,12 @@
   <div class="panel-handle"></div>
   <div class="panel-title">テーマを選択</div>
   <div class="t-opts">
-    <button class="t-opt" data-theme="ocean"    onclick="setTheme('ocean')">   <span class="t-swatch" style="background:linear-gradient(135deg,#2193b0,#6dd5ed)"></span><span class="t-name">オーシャン</span></button>
-    <button class="t-opt" data-theme="dark"     onclick="setTheme('dark')">    <span class="t-swatch" style="background:linear-gradient(135deg,#0f0e17,#4361ee)"></span><span class="t-name">ダーク</span></button>
-    <button class="t-opt" data-theme="light"    onclick="setTheme('light')">   <span class="t-swatch" style="background:linear-gradient(135deg,#f8f9fa,#6c757d)"></span><span class="t-name">ライト</span></button>
-    <button class="t-opt" data-theme="ichigo"   onclick="setTheme('ichigo')">  <span class="t-swatch" style="background:linear-gradient(135deg,#c9184a,#fbb1bd)"></span><span class="t-name">イチゴ</span></button>
-    <button class="t-opt" data-theme="matcha"   onclick="setTheme('matcha')">  <span class="t-swatch" style="background:linear-gradient(135deg,#4f6f52,#d8efd3)"></span><span class="t-name">抹茶</span></button>
-    <button class="t-opt" data-theme="cotton"   onclick="setTheme('cotton')">  <span class="t-swatch" style="background:linear-gradient(135deg,#ff6fa3,#9ed9ff)"></span><span class="t-name">わたあめ</span></button>
-    <button class="t-opt" data-theme="sunset"   onclick="setTheme('sunset')">  <span class="t-swatch" style="background:linear-gradient(135deg,#e85d04,#f48c06)"></span><span class="t-name">サンセット</span></button>
-    <button class="t-opt" data-theme="lavender" onclick="setTheme('lavender')"><span class="t-swatch" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"></span><span class="t-name">ラベンダー</span></button>
-    <button class="t-opt" data-theme="midnight" onclick="setTheme('midnight')"><span class="t-swatch" style="background:linear-gradient(135deg,#0f172a,#0ea5e9)"></span><span class="t-name">ミッドナイト</span></button>
-    <button class="t-opt" data-theme="sakura"   onclick="setTheme('sakura')">  <span class="t-swatch" style="background:linear-gradient(135deg,#f43f5e,#fb7185)"></span><span class="t-name">サクラ</span></button>
-    <button class="t-opt" data-theme="honey"    onclick="setTheme('honey')">   <span class="t-swatch" style="background:linear-gradient(135deg,#b45309,#f59e0b)"></span><span class="t-name">ハニー</span></button>
-    <button class="t-opt" data-theme="sky"      onclick="setTheme('sky')">     <span class="t-swatch" style="background:linear-gradient(135deg,#0369a1,#38bdf8)"></span><span class="t-name">スカイ</span></button>
+    <button class="t-opt" data-theme="ocean"  onclick="setTheme('ocean')"> <span class="t-swatch" style="background:linear-gradient(135deg,#2193b0,#6dd5ed)"></span><span class="t-name">オーシャン</span></button>
+    <button class="t-opt" data-theme="dark"   onclick="setTheme('dark')">  <span class="t-swatch" style="background:linear-gradient(135deg,#0f0f0f,#888888)"></span><span class="t-name">ダーク</span></button>
+    <button class="t-opt" data-theme="light"  onclick="setTheme('light')"> <span class="t-swatch" style="background:linear-gradient(135deg,#f8f9fa,#6c757d)"></span><span class="t-name">ライト</span></button>
+    <button class="t-opt" data-theme="ichigo" onclick="setTheme('ichigo')"><span class="t-swatch" style="background:linear-gradient(135deg,#c9184a,#fbb1bd)"></span><span class="t-name">イチゴ</span></button>
+    <button class="t-opt" data-theme="matcha" onclick="setTheme('matcha')"><span class="t-swatch" style="background:linear-gradient(135deg,#4f6f52,#d8efd3)"></span><span class="t-name">抹茶</span></button>
+    <button class="t-opt" data-theme="cotton" onclick="setTheme('cotton')"><span class="t-swatch" style="background:linear-gradient(135deg,#ff6fa3,#9ed9ff)"></span><span class="t-name">わたあめ</span></button>
   </div>
   <div class="bg-section">
     <div class="fmt-label">背景画像</div>
