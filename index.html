@@ -215,6 +215,7 @@
     .sel-sheet-color:active{transform:scale(.85);}
     /* ── red sheet ── */
     .red-hidden{border-radius:3px;cursor:pointer;padding:1px 3px;transition:background .25s,color .25s;display:inline;-webkit-user-select:none;user-select:none;}
+    ::highlight(sel-hl){background-color:rgba(99,179,237,.45);}
     .red-hidden.revealed{background:rgba(128,128,128,.15) !important;color:inherit !important;}
 
     /* ── download btn ── */
@@ -1941,7 +1942,10 @@ document.addEventListener('selectionchange', () => {
     if (!container.contains(range.commonAncestorContainer)) return;
     savedRange = range.cloneRange();
     const rect = range.getBoundingClientRect();
-    sel.removeAllRanges(); // prevent native copy/share toolbar
+    if (typeof CSS !== 'undefined' && CSS.highlights) {
+      sel.removeAllRanges();
+      CSS.highlights.set('sel-hl', new Highlight(savedRange));
+    }
     showSelToolbar(rect);
   }, 200);
 });
@@ -2002,6 +2006,7 @@ function showSelToolbar(rect) {
 }
 function hideSelToolbar() {
   document.getElementById('sel-toolbar').style.display = 'none';
+  if (typeof CSS !== 'undefined' && CSS.highlights) CSS.highlights.delete('sel-hl');
 }
 
 function wrapSavedRange(className, style) {
