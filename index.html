@@ -1952,13 +1952,41 @@ document.addEventListener('pointerdown', e => {
   }
 });
 
-// Red-hidden toggle
+// Red-hidden toggle + long-press delete
+let _lpTimer = null, _lpFired = false;
+document.getElementById('doc-content').addEventListener('touchstart', e => {
+  const t = e.target.closest('.red-hidden');
+  if (!t) return;
+  _lpFired = false;
+  _lpTimer = setTimeout(() => {
+    _lpFired = true; _lpTimer = null;
+    deleteRedHidden(t);
+  }, 600);
+}, { passive: true });
+document.getElementById('doc-content').addEventListener('touchend',  () => { if (_lpTimer) { clearTimeout(_lpTimer); _lpTimer = null; } }, { passive: true });
+document.getElementById('doc-content').addEventListener('touchmove', () => { if (_lpTimer) { clearTimeout(_lpTimer); _lpTimer = null; } }, { passive: true });
+
 document.getElementById('doc-content').addEventListener('click', e => {
   const sel = window.getSelection();
   if (sel && !sel.isCollapsed) return;
+  if (_lpFired) { _lpFired = false; return; }
   const t = e.target.closest('.red-hidden');
   if (t) t.classList.toggle('revealed');
 });
+
+document.getElementById('doc-content').addEventListener('contextmenu', e => {
+  const t = e.target.closest('.red-hidden');
+  if (!t) return;
+  e.preventDefault();
+  deleteRedHidden(t);
+});
+
+function deleteRedHidden(el) {
+  const parent = el.parentNode;
+  while (el.firstChild) parent.insertBefore(el.firstChild, el);
+  parent.removeChild(el);
+  saveDocContent();
+}
 
 function showSelToolbar(rect) {
   const tb = document.getElementById('sel-toolbar');
