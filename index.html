@@ -2033,7 +2033,26 @@ function applyTextColor(color) {
 }
 function applyRedSheet(color) {
   const c = color || '#2d3748';
-  if (wrapSavedRange('red-hidden', `background:${c};color:${c};`)) { saveDocContent(); hideSelToolbar(); }
+  if (wrapSavedRange('red-hidden', `background:${c};color:${c};`)) { mergeAdjacentMarkers(); saveDocContent(); hideSelToolbar(); }
+}
+function mergeAdjacentMarkers() {
+  const container = document.getElementById('doc-content');
+  let changed;
+  do {
+    changed = false;
+    for (const span of container.querySelectorAll('.red-hidden')) {
+      if (!span.isConnected) continue;
+      let next = span.nextSibling;
+      while (next && next.nodeType === Node.TEXT_NODE && next.textContent === '') next = next.nextSibling;
+      if (!next || next.nodeType !== Node.ELEMENT_NODE || !next.classList.contains('red-hidden')) continue;
+      if (next.style.color !== span.style.color) continue;
+      let node = span.nextSibling;
+      while (node && node !== next) { const t = node.nextSibling; span.appendChild(node); node = t; }
+      while (next.firstChild) span.appendChild(next.firstChild);
+      next.remove();
+      changed = true;
+    }
+  } while (changed);
 }
 function saveDocContent() {
   const all = loadDecks(), doc = all.find(d => d.id === currentDocId);
